@@ -26,4 +26,4 @@ class SermonController {
   }
 }
 
-module.exports.SermonController;
+module.exports = SermonController;
