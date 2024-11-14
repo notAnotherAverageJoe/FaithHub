@@ -19,7 +19,6 @@ const Sermon = sequelize.define(
       type: DataTypes.STRING,
     },
     date: {
-      // Add the `date` field
       type: DataTypes.DATE,
       allowNull: false,
     },
