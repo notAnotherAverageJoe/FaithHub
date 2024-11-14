@@ -1,5 +1,6 @@
-// config/database.js
-require("dotenv").config(); // Load environment variables from .env file
+// config/db.js
+require("dotenv").config();
+
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
@@ -8,5 +9,6 @@ const sequelize = new Sequelize(
     dialect: process.env.DB_DIALECT,
   }
 );
+sequelize.sync(); // Use this if you only want to sync models when required.
 
 module.exports = sequelize;

@@ -1,4 +1,4 @@
-const Sermon = require("../models/Sermons");
+const Sermon = require("../models/Sermon");
 
 class SermonController {
   static async createSermon(req, res) {
