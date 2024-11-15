@@ -28,6 +28,25 @@ class BlogPostController {
         .json({ message: "Failed to fetch all of the blog posts" });
     }
   }
+  static async patchBlogPost(req, res) {
+    const { id } = req.params;
+    const { title, content, author, published_date } = req.body;
+    try {
+      const blogPost = await BlogPost.findByPk(id);
+      if (!blogPost) {
+        return res.status(404).json({ message: "Blog post not found!" });
+      }
+      if (title) blogPost.title = title;
+      if (content) blogPost.content = content;
+      if (author) blogPost.author = author;
+      if (published_date) blogPost.published_date = published_date;
+
+      await blogPost.save();
+      res.status(200).json(blogPost);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to patch the blog post" });
+    }
+  }
 }
 
 module.exports = BlogPostController;
