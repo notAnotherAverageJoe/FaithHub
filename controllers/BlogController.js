@@ -47,6 +47,20 @@ class BlogPostController {
       res.status(500).json({ message: "Failed to patch the blog post" });
     }
   }
+  static async deleteBlogPost(req, res) {
+    const { id } = req.params;
+    try {
+      const blogPost = await BlogPost.findByPk(id);
+      if (!blogPost) {
+        return res.status(404).json({ message: "Failed to find the blogpost" });
+      }
+      await blogPost.destroy();
+
+      res.status(200).json({ message: "Successfully deleted the blogpost" });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete the blogpost" });
+    }
+  }
 }
 
 module.exports = BlogPostController;
