@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const BlogPost = require("../models/BlogPosts");
 
 class BlogPostController {
@@ -17,7 +18,16 @@ class BlogPostController {
       });
     }
   }
-  static async;
+  static async getAllBlogPosts(req, res) {
+    try {
+      const blogs = await BlogPost.findAll();
+      res.status(201).json(blogs);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Failed to fetch all of the blog posts" });
+    }
+  }
 }
 
 module.exports = BlogPostController;

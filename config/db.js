@@ -9,6 +9,6 @@ const sequelize = new Sequelize(
     dialect: process.env.DB_DIALECT,
   }
 );
-sequelize.sync(); // Use this if you only want to sync models when required.
+sequelize.sync();
 
 module.exports = sequelize;
