@@ -17,6 +17,7 @@ class BlogPostController {
       });
     }
   }
+  static async;
 }
 
 module.exports = BlogPostController;

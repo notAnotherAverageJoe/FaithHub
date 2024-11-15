@@ -3,6 +3,7 @@ const express = require("express");
 const sequelize = require("./config/db");
 const eventRoutes = require("./routes/eventRoutes");
 const sermonRoutes = require("./routes/sermonRoutes");
+const blogPostRoutes = require("./routes/blogPostRoutes");
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 // Use routes
 app.use("/api", eventRoutes);
 app.use("/api", sermonRoutes);
+app.use("/api", blogPostRoutes);
 
 // Sync models
 // sequelize
